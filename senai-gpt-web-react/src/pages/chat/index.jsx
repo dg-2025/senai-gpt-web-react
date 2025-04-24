@@ -12,9 +12,40 @@ import microfoneoriginal from "../../assets/imgs/microfone_original.svg";
 import myaccount from "../../assets/imgs/my_account.svg";
 import UpdateseFAQ from "../../assets/imgs/Updates_&_FAQ.svg";
 import SenaiGPT from "../../assets/imgs/SenaiGPT.png";
+import { useEffect, useState } from "react";
 
 
 function Chat() {
+    const [chats, setChats] = useState([]);
+
+    useEffect(() => {
+
+        getChats();
+
+    }, []);
+
+    const getChats = async () => {
+        let response = await fetch("https://senai-gpt-api.azurewebsites.net/chats", {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("meuToken")
+            }
+        })
+        console.log(response);
+
+        if (response.ok == true) {
+
+            let json = await response.json();
+            setChats(json);
+        }
+        else {
+            if (response.status == 401) {
+
+                alert("token ináido. faça o login novamente.");
+                window.location.href = "/login";
+
+            }
+        }
+    }
 
     return (
         <>
@@ -25,18 +56,22 @@ function Chat() {
                     <div className="top-box">
 
                         <button className="new-chat" >+ New chat</button>
-                        <button className="botoes">
-                            <img src={ChatText} alt="" />
-                            AI Chat Tool Ethics
-                        </button>
-                        <button className="botoes">
+
+                        {chats.map(chat => (
+                            <button className="botoes">
+                                <img src={ChatText} alt="" />
+                                {chat.chatTitle}
+                            </button>
+                        ))}
+
+                        {/* <button className="botoes">
                             <img src={ChatText} alt="" />
                             Al Chat Tool Impact Writing
                         </button>
                         <button className="botoes">
                             <img src={ChatText} alt="" />
                             New chat
-                        </button>
+                        </button> */}
 
                     </div>
 
