@@ -15,8 +15,12 @@ import SenaiGPT from "../../assets/imgs/SenaiGPT.png";
 import { useEffect, useState } from "react";
 
 
+
+
+
 function Chat() {
     const [chats, setChats] = useState([]);
+    const [chatselecionado, setChatsselecionados] = useState(null);
 
     useEffect(() => {
 
@@ -47,6 +51,21 @@ function Chat() {
         }
     }
 
+    const onLogOutClick = () => {
+        let sair = confirm("deseja sair ?")
+        if (sair == true) {
+            localStorage.clear();
+            window.location.href = "/login"
+        }
+
+    }
+
+    const clickChat = () => {
+
+        setChatsselecionados(chats);
+
+    }
+
     return (
         <>
 
@@ -58,18 +77,18 @@ function Chat() {
                         <button className="new-chat" >+ New chat</button>
 
                         {chats.map(chat => (
-                            <button className="botoes">
-                                <img src={ChatText} alt="" />
+                            <button className="botoes" onClick={() => clickChat(chat)}>
+                                <img src={ChatText} />
                                 {chat.chatTitle}
                             </button>
                         ))}
 
                         {/* <button className="botoes">
-                            <img src={ChatText} alt="" />
+                            <img src={ChatText}/>
                             Al Chat Tool Impact Writing
                         </button>
                         <button className="botoes">
-                            <img src={ChatText} alt="" />
+                            <img src={ChatText}/>
                             New chat
                         </button> */}
 
@@ -77,23 +96,23 @@ function Chat() {
 
                     <div className="end-box">
                         <button>
-                            <img src={lixeira} alt="" />
+                            <img src={lixeira} />
                             Clear conversations
                         </button>
                         <button>
-                            <img src={ligthmode} alt="" />
+                            <img src={ligthmode} />
                             Light mode
                         </button>
                         <button>
-                            <img src={myaccount} alt="" />
+                            <img src={myaccount} />
                             My account
                         </button>
                         <button>
-                            <img src={UpdateseFAQ} alt="" />
+                            <img src={UpdateseFAQ} />
                             Updates & FAQ
                         </button>
-                        <button>
-                            <img src={logout} alt="" />
+                        <button onClick={() => onLogOutClick()}>
+                            <img src={logout} />
                             Log out
                         </button>
                     </div>
@@ -101,42 +120,56 @@ function Chat() {
 
                 <main>
                     <div className="right-lateral">
-                        <img className="SenaiGPT" src={SenaiGPT} alt="" />
-                        <div className="conteiners">
 
-                            <div className="text-grup">
-                                <img src={Examples} alt="" />
-                                <h1 className="text-grup-titulo">
-                                    Examples
-                                </h1>
-                                <button>"Explain quantum computing insimple terms"</button>
-                                <button>"Got any creative ideas for a 10year old's birthday?"</button>
-                                <button>"How do I make an HTTP requestin Javascript?"</button>
-                            </div>
-                            <div className="text-grup">
-                                <img src={Capabilities} alt="" />
-                                <h1 className="text-grup-titulo">
-                                    Capabilities
-                                </h1>
-                                <button>Remembers what user saidearlier in the conversation.</button>
-                                <button>Allows user to provide follow-up corrections.</button>
-                                <button>Trained to decline inappropriate requests.</button>
-                            </div>
-                            <div className="text-grup">
-                                <img src={limitations} alt="" />
-                                <h1 className="text-grup-titulo">
-                                    Limitations
-                                </h1>
-                                <button>May occasionally generate incorrect information.</button>
-                                <button>May occasionally produce harmful instructions or biased content.</button>
-                                <button>Limited knowledge of world andevents after 2021.</button>
-                            </div>
-                        </div>
+                        {chatselecionado == null && (
+
+
+                            <>
+                                <img className="SenaiGPT" src={SenaiGPT} />
+                                <div className="conteiners">
+
+                                    <div className="text-grup">
+                                        <img src={Examples} />
+                                        <h1 className="text-grup-titulo">
+                                            Examples
+                                        </h1>
+                                        <button>"Explain quantum computing insimple terms"</button>
+                                        <button>"Got any creative ideas for a 10year old's birthday?"</button>
+                                        <button>"How do I make an HTTP requestin Javascript?"</button>
+                                    </div>
+                                    <div className="text-grup">
+                                        <img src={Capabilities} />
+                                        <h1 className="text-grup-titulo">
+                                            Capabilities
+                                        </h1>
+                                        <button>Remembers what user saidearlier in the conversation.</button>
+                                        <button>Allows user to provide follow-up corrections.</button>
+                                        <button>Trained to decline inappropriate requests.</button>
+                                    </div>
+                                    <div className="text-grup">
+                                        <img src={limitations} />
+                                        <h1 className="text-grup-titulo">
+                                            Limitations
+                                        </h1>
+                                        <button>May occasionally generate incorrect information.</button>
+                                        <button>May occasionally produce harmful instructions or biased content.</button>
+                                        <button>Limited knowledge of world andevents after 2021.</button>
+                                    </div>
+                                </div>
+
+
+
+                            </>
+
+
+                        )}
+
+
                         <div className="mensagem">
-                            <img src={iconimg} alt="" />
-                            <img className="microfone" src={microfoneoriginal} alt="" />
+                            <img src={iconimg} />
+                            <img className="microfone" src={microfoneoriginal} />
                             <input className="Type-message" type="text" placeholder="Type message" />
-                            <img src={iconenviar} alt="" />
+                            <img src={iconenviar} />
 
                         </div>
                     </div>
