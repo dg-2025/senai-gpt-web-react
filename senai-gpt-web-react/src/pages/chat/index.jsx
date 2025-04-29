@@ -70,7 +70,7 @@ function Chat() {
 
         // Configurações do endpoint e chave da API
         const endpoint = "https://ai-testenpl826117277026.openai.azure.com/";
-        const apiKey = "hehe";
+        const apiKey =  "";
         const deploymentId = "gpt-4"; // Nome do deployment no Azure OpenAI
         const apiVersion = "2024-05-01-preview"; // Verifique a versão na documentação
 
@@ -104,27 +104,26 @@ function Chat() {
 
     }
     
-
-    
-
-
 const enviarMensagem = async (message) => {
 
     let resposta = await chatGPT(message)
     console.log("resposta: ", resposta)
 
+
+    let userId = localStorage.getItem("meuId")
+
     const novaMensagemUsuario = {
 
-        userId: "",
+        userId: userId,
         text: message,
-        id: 10
+        id: crypto.randomUUID(),
 
     };
     let novaRespostaChatGPT = {
 
         userId: "chatbot",
         text: resposta,
-        id: 10
+        id: crypto.randomUUID()
 
     };
     let novoChatSelecionado = { ...chatselecionado };
@@ -137,6 +136,7 @@ const enviarMensagem = async (message) => {
 
 return (
     <>
+
 
 
         <div className="tela">
