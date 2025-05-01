@@ -18,6 +18,7 @@
     width: 377px; /*largura*/
     margin-bottom: 16px;
 
+
 }
 
 .btn {
@@ -28,7 +29,14 @@
     border: none; /*altura*/
     width: 377px; /*largura*/
     border-radius: 10px; /* Arredonda as bordas */
+    transition: all 0.5s;
     
+}
+.btn:hover {
+
+    background-color: rgb(224, 127, 127);
+    transform: scale(1.05);
+
 }
 
 button {

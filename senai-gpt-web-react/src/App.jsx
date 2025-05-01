@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Chat from "./pages/chat";
+import NewUser from "./pages/usuario";
 
 function App() {
   const isAutenticated = () => {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Login/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/chat" element={isAutenticated() == true? <Chat/> : <Login/>}></Route>
+          <Route path="/new-user" element={<NewUser/>}></Route>
           <Route path="*" element={<h1>Not Found</h1>}></Route>
         </Routes>
 
