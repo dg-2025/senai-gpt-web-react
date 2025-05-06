@@ -23,6 +23,7 @@ function Chat() {
     const [chats, setChats] = useState([]);
     const [chatselecionado, setChatsselecionados] = useState(null);
     const [usermassage, SetUserMassege] = useState("")
+    const [isLeftPanel, setIsLeftPanel] = useState(false);
 
 
     useEffect(() => {
@@ -72,7 +73,7 @@ function Chat() {
 
     }
     const chatGPT = async (message) => {
-
+        
         // Configurações do endpoint e chave da API
         const endpoint = "https://ai-testenpl826117277026.openai.azure.com/";
         const apiKey = "";
@@ -95,7 +96,7 @@ function Chat() {
         };
 
         // Faz a requisição com fetch
-        const response = await fetch(url, {
+        const response = await fetch(url, { 
             method: "POST",
             headers: headers,
             body: JSON.stringify(data)
@@ -196,7 +197,12 @@ function Chat() {
 
 
             <div className="tela">
-                <header className="header-lateral">
+                <button 
+                className={`left-panel ${isLeftPanel == true ? "open" : ""}`}
+                onClick={() => setIsLeftPanel(true)}>
+                    ☰
+                </button>
+                <header className="header-lateral open" >
                     <div className="top-box">
 
                         <button className="new-chat" onClick={() => Newchat()} >+ New chat</button>

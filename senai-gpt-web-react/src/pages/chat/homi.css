@@ -36,6 +36,7 @@
     transition: all 0.2s;
     margin-top: 5px;
 }
+
 .botoes:hover {
 
     background-color: rgb(175, 172, 172);
@@ -57,7 +58,8 @@
     color: #F7F9FB;
     transition: all 0.2s;
 }
-.new-chat:hover{
+
+.new-chat:hover {
 
     background-color: rgb(224, 127, 127);
     transform: scale(1.05);
@@ -85,16 +87,17 @@
     border: none;
     width: 240px;
     border-radius: 7px;
-    transition: all 0,2;
+    transition: all 0, 2;
 
 }
+
 .end-box button:hover {
 
     background-color: rgb(211, 211, 211);
 
 }
 
-.end-box img{
+.end-box img {
     margin-left: 10px;
     margin-right: 20px;
 }
@@ -150,6 +153,7 @@
     height: 50px;
     transition: all 0.5s;
 }
+
 .text-grup button:hover {
 
     transform: scale(1.05);
@@ -189,7 +193,7 @@
     height: 18px;
 }
 
-.chat-container{
+.chat-container {
 
     display: flex;
     flex-direction: column;
@@ -236,14 +240,62 @@
     background: #000;
 
 }
+
 .enviarmsg {
 
     transition: all;
 
 }
+
 .enviarmsg:hover {
 
     transform: scale(1.09);
+
+
+}
+
+@media screen and (max-width: 768px) {
+    .header-lateral {
+
+        display: none;
+    }
+
+    .right-lateral {
+
+        width: 100vw;
+    }
+
+    .conteiners {
+        display: none;
+    }
+
+    .btn-toggle-panel {
+        z-index: 5;
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+
+        position: absolute;
+        right: 190px;
+        bottom: 120px;
+        font-size: 25px;
+        background-color: aliceblue;
+
+    }
+
+    .Type-message {
+
+        width: 290px;
+    }
+
+    .header-lateral.open {
+
+        display: block;
+        position: absolute;
+        width: 70vw;
+        height: 100vh;
+
+    }
 
 
 }
