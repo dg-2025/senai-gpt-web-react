@@ -70,6 +70,7 @@ function Chat() {
     const clickChat = (chat) => {
 
         setChatsselecionados(chat);
+        setIsLeftPanel (false);
 
     }
     const chatGPT = async (message) => {
@@ -198,11 +199,11 @@ function Chat() {
 
             <div className="tela">
                 <button 
-                className={`left-panel ${isLeftPanel == true ? "open" : ""}`}
-                onClick={() => setIsLeftPanel(true)}>
+                 className="btn-toggle-panel"
+                onClick={() => setIsLeftPanel(!isLeftPanel)}>
                     ☰
                 </button>
-                <header className="header-lateral open" >
+                <header className={`header-lateral  ${isLeftPanel == true ? "open" : ""}`}>
                     <div className="top-box">
 
                         <button className="new-chat" onClick={() => Newchat()} >+ New chat</button>

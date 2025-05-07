@@ -254,7 +254,21 @@
 
 }
 
+.btn-toggle-panel {
+
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
+    .tela {
+        display: unset;
+    }
+
+    .btn-toggle-panel {
+
+        display: block;
+    }
+
     .header-lateral {
 
         display: none;
@@ -262,7 +276,7 @@
 
     .right-lateral {
 
-        width: 100vw;
+        width: 95%;
     }
 
     .conteiners {
@@ -271,13 +285,13 @@
 
     .btn-toggle-panel {
         z-index: 5;
-        width: 50px;
+        width: 15vw;
         height: 50px;
         border-radius: 100px;
 
         position: absolute;
-        right: 190px;
-        bottom: 120px;
+        right: 50px;
+        bottom: 116px;
         font-size: 25px;
         background-color: aliceblue;
 
@@ -285,7 +299,7 @@
 
     .Type-message {
 
-        width: 290px;
+        width: 50vw;
     }
 
     .header-lateral.open {
@@ -294,6 +308,24 @@
         position: absolute;
         width: 70vw;
         height: 100vh;
+
+    }
+
+    .right-lateral {
+        padding-top: 1vh;
+
+    }
+
+    .SenaiGPT {
+
+        width: 278px;
+        height: 60px;
+    }
+
+    .mensagem {
+        padding-bottom: 0%;
+        background-color: #e9e9e9;
+        margin-bottom: 15%;
 
     }
 
