@@ -28,7 +28,7 @@
     display: flex;
     text-align: left;
     padding: 12px;
-    background-color: white;
+    background-color: transparent;
     color: black;
     border: none;
     width: 240px;
@@ -82,7 +82,7 @@
     display: flex;
     text-align: left;
     padding: 14px;
-    background-color: white;
+    background-color: transparent;
     color: black;
     border: none;
     width: 240px;
@@ -146,7 +146,7 @@
     flex-direction: column;
     margin-top: 10px;
     padding: 1vh;
-    background-color: #F7F9FB;
+    background-color: transparent;
     color: black;
     border: none;
     width: 260px;
@@ -330,4 +330,41 @@
     }
 
 
+}
+
+body.dark-mode .top-box,
+body.dark-mode .end-box {
+
+    background-color: black !important;
+    border: solid slategrey 1px;
+    
+
+}
+
+
+
+body.dark-mode .top-box,
+body.dark-mode .end-box,
+body.dark-mode button {
+
+    color: azure;
+    transition: all 0, 2s;
+}
+body.dark-mode .top-box,
+body.dark-mode .end-box,
+body.dark-mode button:hover{
+    background-color: rgb(71, 43, 43);
+    transform: scale(1.02);
+    }
+
+body.dark-mode .right-lateral {
+
+    background-color: black !important;
+    
+
+}
+body.dark-mode .text-grup-titulo{
+
+
+    color: #e9e9e9;
 }

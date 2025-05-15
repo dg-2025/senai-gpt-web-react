@@ -1,6 +1,7 @@
 import "./homi.css";
 import Capabilities from "../../assets/imgs/Capabilities.svg";
 import ChatText from "../../assets/imgs/ChatText.svg";
+import darkChatText from "../../assets/imgs/darkChatText.svg";
 import Examples from "../../assets/imgs/Examples.svg";
 import iconenviar from "../../assets/imgs/icon_enviar.svg";
 import iconimg from "../../assets/imgs/iconimg.svg";
@@ -12,6 +13,12 @@ import microfoneoriginal from "../../assets/imgs/microfone_original.svg";
 import myaccount from "../../assets/imgs/my_account.svg";
 import UpdateseFAQ from "../../assets/imgs/Updates_&_FAQ.svg";
 import SenaiGPT from "../../assets/imgs/SenaiGPT.png";
+import darklixeira from "../../assets/imgs/darklixeira.svg";
+import darksol from "../../assets/imgs/darksol.svg";
+import darkmycontr from "../../assets/imgs/darkmycontr.svg";
+import darkupdates from "../../assets/imgs/darkupdates.svg";
+import darksair from "../../assets/imgs/darksair.svg";
+import darkSenaiGPT from "../../assets/imgs/dakSenaiGPT.svg";
 import { useEffect, useState } from "react";
 import { Await } from "react-router-dom";
 
@@ -22,8 +29,10 @@ import { Await } from "react-router-dom";
 function Chat() {
     const [chats, setChats] = useState([]);
     const [chatselecionado, setChatsselecionados] = useState(null);
-    const [usermassage, SetUserMassege] = useState("")
+    const [usermassage, SetUserMassege] = useState("");
     const [isLeftPanel, setIsLeftPanel] = useState(false);
+    const [flagDarkMode, setFlagDarkMode] = useState(false);
+
 
 
     useEffect(() => {
@@ -70,11 +79,11 @@ function Chat() {
     const clickChat = (chat) => {
 
         setChatsselecionados(chat);
-        setIsLeftPanel (false);
+        setIsLeftPanel(false);
 
     }
     const chatGPT = async (message) => {
-        
+        return "sistema indispoivel"
         // Configurações do endpoint e chave da API
         const endpoint = "https://ai-testenpl826117277026.openai.azure.com/";
         const apiKey = "";
@@ -97,7 +106,7 @@ function Chat() {
         };
 
         // Faz a requisição com fetch
-        const response = await fetch(url, { 
+        const response = await fetch(url, {
             method: "POST",
             headers: headers,
             body: JSON.stringify(data)
@@ -183,13 +192,30 @@ function Chat() {
                 nChat
             )
         });
-        if (response.ok ) {
+        if (response.ok) {
 
             await getChats();
 
         }
 
     }
+    const onclickDarkMode = () => {
+
+        setFlagDarkMode(!flagDarkMode);
+        if (flagDarkMode == true) {
+
+            document.body.classList.remove("dark-mode");
+
+        }
+        else {
+            document.body.classList.add("dark-mode")
+
+        }
+        localStorage.setItem("dark-mode", !flagDarkMode)
+
+    }
+
+
 
 
     return (
@@ -198,9 +224,9 @@ function Chat() {
 
 
             <div className="tela">
-                <button 
-                 className="btn-toggle-panel"
-                onClick={() => setIsLeftPanel(!isLeftPanel)}>
+                <button
+                    className="btn-toggle-panel"
+                    onClick={() => setIsLeftPanel(!isLeftPanel)}>
                     ☰
                 </button>
                 <header className={`header-lateral  ${isLeftPanel == true ? "open" : ""}`}>
@@ -210,7 +236,7 @@ function Chat() {
 
                         {chats.map(chat => (
                             <button className="botoes" onClick={() => clickChat(chat)}>
-                                <img src={ChatText} />
+                                <img src={flagDarkMode == true? darkChatText : ChatText} />
                                 {chat.chatTitle}
                             </button>
                         ))}
@@ -228,23 +254,23 @@ function Chat() {
 
                     <div className="end-box">
                         <button>
-                            <img src={lixeira} />
+                            <img src={flagDarkMode == true? darklixeira : lixeira} />
                             Clear conversations
                         </button>
-                        <button>
-                            <img src={ligthmode} />
+                        <button onClick={() => onclickDarkMode()} >
+                            <img src={flagDarkMode == true? darksol : ligthmode} />
                             Light mode
                         </button>
                         <button>
-                            <img src={myaccount} />
+                            <img src={flagDarkMode == true? darkmycontr : myaccount} />
                             My account
                         </button>
                         <button>
-                            <img src={UpdateseFAQ} />
+                            <img src={flagDarkMode == true? darkupdates : UpdateseFAQ} />
                             Updates & FAQ
                         </button>
                         <button onClick={() => onLogOutClick()}>
-                            <img src={logout} />
+                            <img src={flagDarkMode == true? darksair : logout} />
                             Log out
                         </button>
                     </div>
@@ -257,7 +283,7 @@ function Chat() {
 
 
                             <>
-                                <img className="SenaiGPT" src={SenaiGPT} />
+                                <img className="SenaiGPT" src={flagDarkMode == true? darkSenaiGPT : SenaiGPT} />
                                 <div className="conteiners">
 
                                     <div className="text-grup">
